@@ -1,0 +1,1332 @@
+/* RITMO — GUÍA DE ESTILOS
+   Lee los bloques numerados de arriba hacia abajo.
+   Las reglas posteriores tienen prioridad cuando repiten un selector.
+   No se han reordenado: conservamos la cascada del diseño actual.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap");
+
+/* 1. VARIABLES GLOBALES: colores reutilizados con var(--nombre). */
+:root {
+  --ink: #202020;
+  --purple: #7344ed;
+  --lime: #d6fa52;
+}
+/* 2. BASE: modelo de caja, desplazamiento, tipografía y foco visible. */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 5px;
+}
+/* 3. BANNER: sticky conserva la barra arriba al desplazarnos; z-index la superpone. */
+.flash {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 14px;
+}
+.flash b {
+  color: var(--lime);
+  letter-spacing: 1px;
+}
+.flash a {
+  border-bottom: 1px solid #888;
+}
+.clock-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#clock {
+  font-variant-numeric: tabular-nums;
+  color: var(--lime);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+/* 4. ENCABEZADO Y NAVEGACIÓN. */
+header {
+  height: 100px;
+  margin: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+}
+.logo {
+  font-size: 38px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -2px;
+}
+.logo span {
+  font-size: 15px;
+  vertical-align: top;
+  letter-spacing: 0;
+}
+nav {
+  display: flex;
+  gap: 36px;
+  font-size: 14px;
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--purple);
+  border-radius: 50%;
+  margin-left: 5px;
+}
+.header-note {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+/* 5. HERO: dos columnas en escritorio, texto e imagen destacada. */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  padding: 52px 5% 60px;
+  align-items: center;
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow > span {
+  width: 7px;
+  height: 7px;
+  background: var(--purple);
+  border-radius: 50%;
+}
+h1 {
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: clamp(68px, 8.5vw, 132px);
+  letter-spacing: -2px;
+  line-height: 0.96;
+  margin: 23px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+h1 em {
+  font-style: italic;
+  color: var(--purple);
+}
+.hero-copy > p {
+  color: #676767;
+  line-height: 1.7;
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+/* Botones: respuesta breve al hover mediante transform y sombra. */
+.button {
+  padding: 18px 23px;
+  display: inline-flex;
+  gap: 32px;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.primary {
+  background: var(--purple);
+  color: white;
+}
+.button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px #7344ed30;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 35px;
+}
+.hero-meta i {
+  font-size: 20px;
+  font-style: normal;
+  color: var(--purple);
+}
+/* Escenario visual: capas de imagen, palabra decorativa, etiqueta y pie. */
+.hero-art {
+  background: #e9e2ff;
+  position: relative;
+  min-height: 515px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edition {
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+.big-word {
+  position: absolute;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(160px, 23vw, 360px);
+  color: #d4c6fc;
+  transform: rotate(-8deg);
+  line-height: 1;
+}
+/* multiply integra el fondo claro de las fotos con el color del escenario. */
+.hero-shoe {
+  width: 95%;
+  mix-blend-mode: multiply;
+  position: relative;
+  transform: rotate(-16deg);
+  transition: transform 0.5s;
+}
+.hero-art:hover .hero-shoe {
+  transform: rotate(-11deg) translateY(-10px) scale(1.04);
+}
+.sale-sticker {
+  position: absolute;
+  right: 22px;
+  top: 60px;
+  transform: rotate(10deg);
+  padding: 20px 15px;
+  background: var(--lime);
+  border-radius: 50%;
+  font-size: 15px;
+  text-align: center;
+}
+.art-caption {
+  position: absolute;
+  bottom: 25px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.art-caption small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 7px;
+}
+.art-caption b {
+  font-size: 18px;
+}
+/* 6. FRANJA DECORATIVA. */
+.ribbon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 36px;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--lime);
+  padding: 19px 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.ribbon i {
+  font-size: 27px;
+  font-style: normal;
+}
+/* 7. COLECCIÓN DE PRODUCTOS. */
+.products {
+  padding: 70px 5%;
+}
+.section-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+h2 {
+  font-size: clamp(28px, 3.5vw, 46px);
+  letter-spacing: -1.5px;
+  margin: 10px 0;
+}
+h2 > span {
+  color: var(--purple);
+}
+.section-description {
+  color: #707070;
+  font-size: 16px;
+  margin: 10px 0 30px;
+}
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+.arrows button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 50%;
+  font-size: 23px;
+  transition: 0.2s;
+}
+.arrows button:hover {
+  background: var(--purple);
+  color: #fff;
+}
+.arrows button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+/* scroll-snap alinea las tarjetas después del desplazamiento horizontal. */
+.carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 5px 0 15px;
+}
+.card {
+  flex: 0 0 36%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+/* Tarjetas: dimensiones de imagen y ampliación suave al pasar el cursor. */
+.product-image {
+  width: 100%;
+  height: 330px;
+  border: 0;
+  border-radius: 9px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lavender {
+  background: #f0edfa;
+}
+.lime {
+  background: #eff3e4;
+}
+.peach {
+  background: #f7ede5;
+}
+.product-image img {
+  height: 85%;
+  width: 90%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.35s;
+}
+.product-image:hover img {
+  transform: scale(1.08) rotate(-3deg);
+}
+.tag {
+  position: absolute;
+  z-index: 1;
+  top: 18px;
+  left: 18px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.expand {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #777;
+  margin-top: 20px;
+}
+.product-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+  margin-top: 9px;
+}
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+.product-title b {
+  font-size: 15px;
+  white-space: nowrap;
+}
+del {
+  display: block;
+  color: #858585;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: right;
+  margin-top: 5px;
+}
+.card p {
+  font-size: 14px;
+  color: #707070;
+  margin-top: 8px;
+}
+.collection-bottom {
+  border-top: 1px solid #ddd;
+  margin-top: 25px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #777;
+}
+/* 8. SECCIÓN FINAL Y PIE. */
+.closing {
+  margin: 0 5% 60px;
+  padding: 40px;
+  background: var(--ink);
+  color: white;
+  border-radius: 12px;
+  position: relative;
+}
+.closing > span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--lime);
+}
+.closing h2 {
+  margin: 12px 0 22px;
+}
+.closing .button {
+  background: var(--lime);
+  color: var(--ink);
+}
+footer {
+  border-top: 1px solid #ddd;
+  margin: 0 5%;
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+footer p {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}
+footer > span {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+/* 9. MODAL BASE: el fondo ::backdrop pertenece al diálogo abierto con showModal(). */
+dialog {
+  border: 0;
+  border-radius: 16px;
+  width: min(460px, 90vw);
+  padding: 30px;
+  box-shadow: 0 30px 100px #0005;
+}
+dialog::backdrop {
+  background: #15112499;
+}
+dialog img {
+  height: 220px;
+  width: 100%;
+  object-fit: contain;
+}
+dialog h2 {
+  font-size: 28px;
+}
+dialog small {
+  font-size: 13px;
+  color: #666;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  background: #f0edfa;
+  border: 0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+}
+/* 10. RESPONSIVE: limita el ancho en monitores grandes. */
+@media (min-width: 1500px) {
+  main,
+  header,
+  footer {
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* En pantallas pequeñas: una columna y tarjetas que se deslizan con el dedo. */
+@media (max-width: 800px) {
+  .flash {
+    padding: 10px 4%;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .flash-copy,
+  .flash > a,
+  .header-note {
+    display: none;
+  }
+  .clock-label {
+    gap: 8px;
+  }
+  #clock {
+    font-size: 15px;
+  }
+  header {
+    height: 80px;
+  }
+  .logo {
+    font-size: 32px;
+  }
+  nav {
+    gap: 20px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 32px;
+    gap: 30px;
+  }
+  h1 {
+    font-size: 88px;
+  }
+  .hero-art {
+    min-height: 380px;
+  }
+  .big-word {
+    font-size: 300px;
+  }
+  .hero-shoe {
+    width: 85%;
+    max-height: 370px;
+    object-fit: contain;
+  }
+  .hero-meta {
+    margin-top: 26px;
+  }
+  .hero-copy > p br {
+    display: none;
+  }
+  .card {
+    flex-basis: 75%;
+  }
+  .product-image {
+    height: 300px;
+  }
+  .products {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  .section-top {
+    align-items: end;
+  }
+  .arrows button {
+    height: 39px;
+    width: 39px;
+  }
+  .product-title {
+    display: block;
+  }
+  .product-title b {
+    display: block;
+    margin-top: 10px;
+  }
+  del {
+    display: inline;
+    margin-left: 8px;
+  }
+  .closing {
+    padding: 30px;
+  }
+  footer {
+    flex-wrap: wrap;
+  }
+  footer > span {
+    display: none;
+  }
+  .ribbon {
+    justify-content: start;
+    padding-left: 20px;
+  }
+  .hero {
+    padding-bottom: 38px;
+  }
+}
+/* Accesibilidad: desactiva animaciones cuando el sistema solicita menos movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* 11. OFERTA ANIMADA: brillo, rayo y bloques del contador. */
+.flash {
+  isolation: isolate;
+  background: linear-gradient(110deg, #21182f, #332050 60%, #21182f);
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid #a283f7;
+}
+.flash::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    #d6fa5229 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  animation: offer-shine 4s ease-in-out 3;
+  pointer-events: none;
+}
+.flash-title {
+  white-space: nowrap;
+}
+.flash-bolt {
+  display: inline-block;
+  animation: bolt-wiggle 2s ease-in-out 3;
+}
+.flash a {
+  background: var(--lime);
+  color: #222;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 20px;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.flash a:hover {
+  transform: scale(1.05);
+}
+#clock {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0;
+}
+#clock i {
+  font-size: 16px;
+  font-style: normal;
+  color: #c7b5ef;
+}
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 39px;
+  background: #ffffff12;
+  border: 1px solid #bd9eff55;
+  border-radius: 6px;
+  padding: 4px 6px;
+  box-shadow: 0 0 12px #9d6eff16;
+}
+.time-value {
+  display: block;
+  font-size: 19px;
+  line-height: 1.05;
+}
+.time-unit small {
+  font-size: 9px;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  color: #e3d9f8;
+  margin-top: 2px;
+}
+#flash-motion {
+  background: transparent;
+  color: var(--lime);
+  border: 1px solid #ffffff45;
+  border-radius: 50%;
+  height: 29px;
+  width: 29px;
+  padding: 0;
+  font-size: 18px;
+}
+#flash-motion[aria-pressed="true"] {
+  color: #bbb;
+}
+.effects-paused::before,
+.effects-paused .flash-bolt {
+  animation: none;
+}
+.flash a:focus-visible,
+.flash button:focus-visible {
+  outline-color: var(--lime);
+}
+
+/* Keyframes del brillo y del rayo: se ejecutan pocas veces al inicio. */
+@keyframes offer-shine {
+  0%,
+  20% {
+    transform: translateX(-100%);
+  }
+  65%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes bolt-wiggle {
+  0%,
+  70%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  78% {
+    transform: rotate(-13deg) scale(1.2);
+  }
+  86% {
+    transform: rotate(12deg) scale(1.2);
+  }
+}
+
+/* 12. CARRUSEL DEL HERO: diapositivas superpuestas y controles inferiores. */
+.hero-carousel {
+  display: block;
+  touch-action: pan-y;
+}
+.hero-slides {
+  position: absolute;
+  inset: 0 0 62px;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(24px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    visibility 0.5s;
+  background: #e9e2ff;
+  overflow: hidden;
+}
+/* JavaScript asigna active únicamente al producto mostrado. */
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+.hero-slide .hero-shoe {
+  max-height: 360px;
+  object-fit: contain;
+  width: 95%;
+}
+.hero-slide .art-caption {
+  bottom: 18px;
+}
+.hero-slide .edition {
+  z-index: 2;
+}
+.hero-slide .big-word {
+  font-size: clamp(155px, 20vw, 300px);
+}
+.slide-training {
+  background: #eaf3cb;
+}
+.slide-training .big-word {
+  color: #d3e6a1;
+}
+.slide-training .sale-sticker {
+  background: #7344ed;
+  color: #fff;
+}
+.slide-training .hero-shoe {
+  width: 65%;
+  max-height: 310px;
+  transform: rotate(-8deg);
+}
+.slide-basket {
+  background: #fae6d8;
+}
+.slide-basket .big-word {
+  color: #f0c9ae;
+}
+.slide-basket .hero-shoe {
+  width: 65%;
+  max-height: 300px;
+  transform: rotate(-12deg);
+}
+.hero-carousel:hover .slide-training .hero-shoe,
+.hero-carousel:hover .slide-basket .hero-shoe {
+  transform: rotate(-3deg) translateY(-6px) scale(1.04);
+}
+/* Controles e indicadores; aria-current marca el indicador seleccionado. */
+.hero-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  background: #ffffffb8;
+}
+.hero-controls > button {
+  height: 36px;
+  min-width: 36px;
+  border: 1px solid #20202022;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 20px;
+}
+.hero-controls button:hover {
+  background: var(--ink);
+  color: white;
+}
+.hero-dots {
+  display: flex;
+  gap: 6px;
+  margin-right: auto;
+}
+.hero-dots button {
+  border: 0;
+  background: transparent;
+  width: 24px;
+  height: 34px;
+  padding: 0;
+  position: relative;
+}
+.hero-dots button::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 13px;
+  width: 9px;
+  height: 9px;
+  background: #999;
+  border-radius: 20px;
+  transition:
+    width 0.25s,
+    background 0.25s;
+}
+.hero-dots button[aria-current="true"]::after {
+  width: 18px;
+  left: 2px;
+  background: var(--purple);
+}
+#hero-position {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+#hero-pause {
+  font-size: 14px;
+}
+.hero-carousel:focus-visible {
+  outline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .hero-carousel {
+    min-height: 430px;
+  }
+  .hero-slide .hero-shoe {
+    max-height: 290px;
+  }
+  .slide-training .hero-shoe,
+  .slide-basket .hero-shoe {
+    max-height: 240px;
+  }
+  .hero-slide .art-caption b {
+    font-size: 16px;
+  }
+  .hero-slide .sale-sticker {
+    top: 45px;
+    font-size: 13px;
+  }
+  .hero-slide .edition {
+    font-size: 10px;
+    left: 20px;
+    top: 20px;
+  }
+  .flash {
+    gap: 6px;
+  }
+  .clock-label {
+    gap: 6px;
+    font-size: 11px;
+  }
+  #clock {
+    gap: 3px;
+  }
+  .time-unit {
+    min-width: 31px;
+    padding: 4px;
+  }
+  .time-value {
+    font-size: 16px;
+  }
+  .flash b {
+    font-size: 11px;
+    letter-spacing: 0.4px;
+  }
+  #flash-motion {
+    width: 25px;
+    height: 25px;
+  }
+  .hero-controls {
+    padding: 10px 18px;
+    gap: 8px;
+  }
+}
+@media (max-width: 370px) {
+  .clock-label {
+    font-size: 0;
+  }
+  #clock {
+    font-size: 14px;
+  }
+  .flash {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .flash-bolt {
+    font-size: 12px;
+  }
+  .hero-slide .sale-sticker {
+    right: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flash::before,
+  .flash-bolt {
+    animation: none;
+  }
+  .hero-slide,
+  .hero-shoe,
+  .hero-dots button::after {
+    transition: none;
+  }
+}
+.flash {
+  overflow: hidden;
+}
+
+/* 13. CONTADOR INTERACTIVO Y CAPA DE FUEGOS ARTIFICIALES. */
+#celebrate-offer {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    filter 0.18s,
+    background 0.18s;
+}
+#celebrate-offer:hover {
+  filter: brightness(1.2);
+}
+#celebrate-offer:active {
+  background: #d6fa5220;
+}
+#celebrate-offer.celebrated {
+  background: #d6fa5240;
+  outline: 2px solid var(--lime);
+}
+/* pointer-events:none permite seguir haciendo clic a través de las partículas. */
+#offer-fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: hidden;
+}
+.offer-particle {
+  position: absolute;
+  pointer-events: none;
+  box-shadow: 0 0 7px currentColor;
+}
+.slide-bag {
+  background: #dbedf7;
+}
+.slide-bag .big-word {
+  color: #bdddea;
+}
+.slide-bottle {
+  background: #f8e2ef;
+}
+.slide-bottle .big-word {
+  color: #ecc4de;
+}
+.slide-bag .sale-sticker {
+  background: #7344ed;
+  color: #fff;
+}
+.slide-bag .hero-shoe,
+.slide-bottle .hero-shoe {
+  width: 65%;
+  max-height: 290px;
+  transform: rotate(-8deg);
+}
+.hero-carousel:hover .slide-bag .hero-shoe,
+.hero-carousel:hover .slide-bottle .hero-shoe {
+  transform: rotate(-3deg) translateY(-6px) scale(1.04);
+}
+.sky {
+  background: #e5f0f7;
+}
+.pink {
+  background: #f7eaf2;
+}
+.hero-dots {
+  gap: 2px;
+}
+@media (max-width: 800px) {
+  .slide-bag .hero-shoe,
+  .slide-bottle .hero-shoe {
+    max-height: 230px;
+  }
+  .hero-controls {
+    gap: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .hero-controls > button {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+  }
+  .hero-dots button {
+    width: 22px;
+  }
+  .hero-dots {
+    gap: 0;
+  }
+  #hero-position {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #celebrate-offer {
+    transition: none;
+  }
+}
+
+/* 14. EFECTO EN TODA LA BARRA: la oferta vencida no bloquea los clics festivos. */
+.flash {
+  cursor: pointer;
+}
+.flash.celebrated {
+  box-shadow: inset 0 0 0 2px var(--lime);
+  background: #493162;
+}
+.offer-ended::before,
+.offer-ended .flash-bolt {
+  animation: none;
+}
+#flash-motion {
+  cursor: pointer;
+}
+/* 15. DETALLES AMPLIADOS, SELECTORES Y ESTADOS DE ERROR. */
+#details {
+  width: min(850px, 92vw);
+  max-height: 90dvh;
+  padding: 0;
+  overflow: auto;
+}
+#details[open] {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+}
+.detail-visual {
+  background: #f0edfa;
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  padding: 20px;
+  position: relative;
+}
+.detail-visual img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.detail-content {
+  padding: 38px 28px 28px;
+}
+.detail-content h2 {
+  font-size: 30px;
+  line-height: 1.1;
+}
+.detail-content > p {
+  line-height: 1.5;
+  font-size: 14px;
+}
+.detail-content #detail-price {
+  font-size: 23px;
+  font-weight: 700;
+}
+.detail-content #detail-price del {
+  display: inline;
+  margin-left: 10px;
+  font-size: 15px;
+}
+.detail-content #detail-description {
+  color: #626262;
+}
+.detail-offer {
+  background: #eaf6c9;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.detail-offer.expired {
+  background: #f0edf5;
+  color: #5a5068;
+}
+/* Opciones nativas de radio: el input conserva teclado y accesibilidad. */
+.option-group {
+  border: 0;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.option-group legend {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.option-chip {
+  position: relative;
+  cursor: pointer;
+}
+.option-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.option-chip span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #d3d0dc;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 14px;
+  min-height: 40px;
+}
+/* Estado seleccionado; el borde permite reconocerlo además del color. */
+.option-chip input:checked + span {
+  background: #eee7ff;
+  border-color: var(--purple);
+  color: #4e28a5;
+  box-shadow: inset 0 0 0 1px var(--purple);
+}
+.option-chip input:focus-visible + span {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+.color-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid #0003;
+}
+.demo-note {
+  color: #777;
+  font-size: 12px !important;
+}
+.purchase-note {
+  border-top: 1px solid #ddd;
+  padding-top: 14px;
+  font-weight: 600;
+}
+#detail-selection {
+  font-weight: 500;
+  min-height: 21px;
+  color: #5930ae;
+}
+.store-info {
+  font-size: 13px;
+  color: #626262;
+  line-height: 1.6;
+}
+.store-info summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.close {
+  z-index: 2;
+}
+/* Aviso flotante reutilizado para errores y reintentos. */
+.site-feedback {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  width: 500px;
+  z-index: 70;
+  background: #24202d;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 35px #0004;
+  padding: 16px 45px 16px 18px;
+}
+.site-feedback[hidden] {
+  display: none;
+}
+.site-feedback p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.site-feedback button {
+  background: transparent;
+  border: 0;
+  color: var(--lime);
+  font-size: 14px;
+  padding: 6px 0;
+  margin-top: 7px;
+}
+#dismiss-feedback {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 25px;
+}
+/* Reemplazo textual cuando una fotografía no pudo cargarse. */
+.image-unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 28%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #554b65;
+  background: #ffffffbd;
+  padding: 15px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 1;
+}
+.image-failed {
+  visibility: hidden !important;
+}
+.noscript-note {
+  padding: 15px 5%;
+  background: #eff3e4;
+  font-size: 14px;
+}
+/* El color de fondo cambia suavemente según el producto elegido en JS. */
+.hero-carousel {
+  transition: background-color 0.5s ease;
+}
+.hero-slide {
+  background: transparent !important;
+}
+.slide-bag .big-word,
+.slide-bottle .big-word {
+  font-size: clamp(125px, 15vw, 230px);
+}
+/* Modal en móviles: imagen arriba y opciones debajo. */
+@media (max-width: 650px) {
+  #details[open] {
+    display: block;
+  }
+  .detail-visual {
+    min-height: 180px;
+    height: 190px;
+  }
+  .detail-visual img {
+    height: 170px;
+  }
+  .detail-content {
+    padding: 24px;
+  }
+  .site-feedback {
+    bottom: 12px;
+  }
+  .detail-content h2 {
+    font-size: 27px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel {
+    transition: none;
+  }
+}

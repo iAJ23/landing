@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+  <head
+    ><meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width,initial-scale=1" /><meta
+      name="description"
+      content="RITMO: equipo deportivo para moverte a tu manera. Explora nuestra colección de muestra." /><title
+      >RITMO — Muévete a tu manera</title
+    ><link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237344ed'/%3E%3Cpath d='M18 4 8 18h8l-2 10L25 13h-9z' fill='%23d6fa52'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css"
+  /></head>
+  <body>
+
+    <!-- 2.BANNER STICKY-->
+    <div class="flash"
+      ><span class="flash-title"
+        ><span class="flash-bolt" aria-hidden="true">⚡</span> <b>FLASH SALE</S
+        ><span class="flash-copy"> · Hasta −30% en esta selección</span></span
+      ><span class="clock-label"
+        >Termina en
+        <button
+          id="celebrate-offer"
+          type="button"
+          aria-label="Celebrar la oferta con fuegos artificiales"
+          title="¡Haz clic para celebrar!"
+        >
+          <!--tiempo guardado en localStorage. -->
+          <strong id="clock" role="timer" aria-label="Cargando contador"
+            ><span class="time-unit"
+              ><span class="time-value">--</span><small>HRS</small></span
+            ><i>:</i
+            ><span class="time-unit"
+              ><span class="time-value">--</span><small>MIN</small></span
+            ><i>:</i
+            ><span class="time-unit"
+              ><span class="time-value">--</span><small>SEG</small></span
+            ></strong
+          ></button
+        ><button
+          id="flash-motion"
+          aria-label="Pausar efectos de la oferta"
+          aria-pressed="false"
+          >✦</button
+        ></span
+      ><a id="featured-offer" href="#producto-running" data-product="running"
+        >Ver oferta ↗</a
+      ></div
+    >
+
+    <!-- 3. ENCABEZADO -->
+    <header
+      ><a class="logo" href="#">RITMO<span>®</span></a
+      ><nav aria-label="Principal"
+        ><a href="#productos">Colección</a
+        ><a href="#oferta">Oferta flash <span class="dot"></span></a></nav
+      ><span class="header-note">EL MOVIMIENTO ES TUYO.</span></header
+    >
+
+    <!-- 4. CONTENIDO PRINCIPAL. -->
+    <main>
+      <!-- HERO: presentación de la tienda y carrusel-->
+      <section class="hero" id="oferta"
+        ><div class="hero-copy"
+          ><div class="eyebrow"><span></span> NUEVA ENERGÍA. MISMO TÚ.</div
+          ><h1>Muévete<br />a tu <em>manera.</em></h1
+          ><p
+            >Para tu primer kilómetro. Para una repetición más.<br />Encuentra
+            el equipo que sigue tu ritmo.</p
+          ><a class="button primary" href="#productos"
+            >Encuentra tu siguiente paso <span>↗</span></a
+          ><div class="hero-meta"
+            ><span>RUNNING</span><i>✳</i><span>TRAINING</span><i>✳</i
+            ><span>LIFESTYLE</span></div
+          ></div
+        >
+        <!--contenedor para navegar con las flechas del teclado. -->
+        <div
+          class="hero-art hero-carousel"
+          role="region"
+          aria-roledescription="carrusel"
+          aria-label="Productos destacados"
+          tabindex="0"
+        >
+          <!-- Solo la diapositiva activa es visible; aria-hidden e inert se actualizan en JS. -->
+          <div class="hero-slides">
+            <div
+              class="hero-slide active"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="1 de 5: Running"
+              ><span class="edition">SELECCIÓN / 01 · RUNNING</span
+              ><span class="big-word" aria-hidden="true">GO!</span
+              ><img
+                src="shoe.jpg"
+                alt="Tenis blancos de running"
+                class="hero-shoe"
+              /><span class="sale-sticker">DA EL<br /><b>SALTO ↗</b></span
+              ><div class="art-caption"
+                ><div
+                  ><small>HECHOS PARA SEGUIRTE</small
+                  ><b>Un paso adelante.</b></div
+                ></div
+              ></div
+            >
+            <div
+              class="hero-slide slide-training"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="2 de 5: Training"
+              aria-hidden="true"
+              inert
+              ><span class="edition">SELECCIÓN / 02 · TRAINING</span
+              ><span class="big-word" aria-hidden="true">FIT!</span
+              ><img
+                src="tee.png"
+                alt="Playera deportiva negra de entrenamiento"
+                class="hero-shoe"
+              /><span class="sale-sticker">UNA REP<br /><b>MÁS ↗</b></span
+              ><div class="art-caption"
+                ><div
+                  ><small>DA LO MEJOR DE TI</small
+                  ><b>Supera tu siguiente reto.</b></div
+                ></div
+              ></div
+            >
+            <div
+              class="hero-slide slide-basket"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="3 de 5: Basketball"
+              aria-hidden="true"
+              inert
+              ><span class="edition">SELECCIÓN / 03 · BASKETBALL</span
+              ><span class="big-word" aria-hidden="true">PLAY!</span
+              ><img
+                src="ball.webp"
+                alt="Balón de básquetbol"
+                class="hero-shoe"
+              /><span class="sale-sticker">TU<br /><b>JUGADA ↗</b></span
+              ><div class="art-caption"
+                ><div
+                  ><small>LA CANCHA TE ESPERA</small
+                  ><b>Juega a tu manera.</b></div
+                ></div
+              ></div
+            >
+            <div
+              class="hero-slide slide-bag"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="4 de 5: EQUIPO"
+              aria-hidden="true"
+              inert
+              ><span class="edition">SELECCIÓN / 04 · EQUIPO</span
+              ><span class="big-word" aria-hidden="true">PACK!</span
+              ><img
+                src="bag.jpg"
+                alt="Bolsa deportiva"
+                class="hero-shoe"
+              /><span class="sale-sticker">LLEVA TU<br /><b>RITMO ↗</b></span
+              ><div class="art-caption"
+                ><div
+                  ><small>TODO LISTO PARA SALIR</small
+                  ><b>Tu equipo, siempre contigo.</b></div
+                ></div
+              ></div
+            ><div
+              class="hero-slide slide-bottle"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="5 de 5: HIDRATACIÓN"
+              aria-hidden="true"
+              inert
+              ><span class="edition">SELECCIÓN / 05 · HIDRATACIÓN</span
+              ><span class="big-word" aria-hidden="true">FRESH!</span
+              ><img
+                src="bottle.jpg"
+                alt="Botella deportiva"
+                class="hero-shoe"
+              /><span class="sale-sticker">RECARGA<br /><b>ENERGÍA ↗</b></span
+              ><div class="art-caption"
+                ><div
+                  ><small>HAZ UNA PAUSA. SIGUE ADELANTE.</small
+                  ><b>Un sorbo. Otro intento.</b></div
+                ></div
+              ></div
+            ></div
+          >
+          <!-- Flechas, indicadores y pausa de la reproducción automática. -->
+          <div class="hero-controls"
+            ><button id="hero-prev" aria-label="Producto destacado anterior"
+              >←</button
+            ><div class="hero-dots"
+              ><button
+                aria-label="Mostrar running"
+                aria-current="true"
+                data-slide="0"
+              ></button
+              ><button aria-label="Mostrar training" data-slide="1"></button
+              ><button aria-label="Mostrar básquetbol" data-slide="2"></button
+              ><button
+                aria-label="Mostrar bolsa deportiva"
+                data-slide="3"
+              ></button
+              ><button
+                aria-label="Mostrar botella deportiva"
+                data-slide="4"
+              ></button></div
+            ><span id="hero-position">01 / 05</span
+            ><button id="hero-pause" aria-label="Pausar carrusel">Ⅱ</button
+            ><button id="hero-next" aria-label="Siguiente producto destacado"
+              >→</button
+            ></div
+          ></div
+        ></section
+      >
+
+      <!-- 5. FRANJA DECORATIVA-->
+      <div class="ribbon" aria-hidden="true"
+        ><span>MENOS EXCUSAS</span><i>✳</i><span>MÁS MOVIMIENTO</span><i>✳</i
+        ><span>A TU RITMO</span><i>✳</i><span>MENOS EXCUSAS</span><i>✳</i
+        ><span>MÁS MOVIMIENTO</span></div
+      >
+
+      <!-- 6. COLECCIÓN -->
+      <section class="products" id="productos"
+        ><div class="section-top"
+          ><div
+            ><div class="eyebrow">TU PRÓXIMO IMPULSO</div
+            ><h2>Equipo que te mueve<span>.</span></h2></div
+          ><div class="arrows"
+            ><button id="prev" aria-label="Productos anteriores">←</button
+            ><button id="next" aria-label="Productos siguientes">→</button></div
+          ></div
+        ><p class="section-description"
+          >Cinco esenciales. Infinitas formas de moverte.</p
+        ><div
+          class="carousel"
+          id="carousel"
+          tabindex="0"
+          aria-label="Carrusel de productos de muestra"
+        >
+          <!-- Tarjeta 1-->
+          <article class="card" id="producto-running"
+            ><button
+              class="product-image lavender"
+              data-name="Tenis de running"
+              data-product="running"
+              aria-label="Ver detalles de tenis de running"
+              ><span class="tag">−30%</span
+              ><img src="shoe.jpg" alt="Tenis de running blancos" /><span
+                class="expand"
+                >↗</span
+              ></button
+            ><div class="product-meta">RUNNING <span>01</span></div
+            ><div class="product-title"
+              ><h3>Tenis de running</h3><b>$1,399 <del>$1,999</del></b></div
+            ><p>Ligereza para sumar kilómetros.</p></article
+          ><article class="card"
+            ><button
+              class="product-image lime"
+              data-name="Playera de entrenamiento"
+              data-product="training"
+              aria-label="Ver detalles de playera de entrenamiento"
+              ><span class="tag">−20%</span
+              ><img src="tee.png" alt="Playera deportiva negra" /><span
+                class="expand"
+                >↗</span
+              ></button
+            ><div class="product-meta">TRAINING <span>02</span></div
+            ><div class="product-title"
+              ><h3>Playera de entrenamiento</h3><b>$399 <del>$499</del></b></div
+            ><p>Tu esencial para cada sesión.</p></article
+          ><article class="card"
+            ><button
+              class="product-image peach"
+              data-name="Balón de básquetbol"
+              data-product="basket"
+              aria-label="Ver detalles de balón de básquetbol"
+              ><span class="tag">−25%</span
+              ><img src="ball.webp" alt="Balón de básquetbol naranja" /><span
+                class="expand"
+                >↗</span
+              ></button
+            ><div class="product-meta">BASKETBALL <span>03</span></div
+            ><div class="product-title"
+              ><h3>Balón de básquetbol</h3><b>$599 <del>$799</del></b></div
+            ><p>La siguiente jugada es tuya.</p></article
+          ><article class="card"
+            ><button
+              class="product-image sky"
+              data-name="Bolsa deportiva"
+              data-product="bag"
+              aria-label="Ver detalles de bolsa deportiva"
+              ><span class="tag">−22%</span
+              ><img src="bag.jpg" alt="Bolsa deportiva" /><span class="expand"
+                >↗</span
+              ></button
+            ><div class="product-meta">EQUIPO <span>04</span></div
+            ><div class="product-title"
+              ><h3>Bolsa deportiva</h3><b>$699 <del>$899</del></b></div
+            ><p>Todo tu equipo, en un solo lugar.</p></article
+          ><article class="card"
+            ><button
+              class="product-image pink"
+              data-name="Botella deportiva"
+              data-product="bottle"
+              aria-label="Ver detalles de botella deportiva"
+              ><span class="tag">−25%</span
+              ><img src="bottle.jpg" alt="Botella deportiva" /><span
+                class="expand"
+                >↗</span
+              ></button
+            ><div class="product-meta">HIDRATACIÓN <span>05</span></div
+            ><div class="product-title"
+              ><h3>Botella deportiva</h3><b>$299 <del>$399</del></b></div
+            ><p>Recarga energía y sigue adelante.</p></article
+          ></div
+        >
+        <!-- Indicador que JavaScript actualiza conforme se desplaza la colección. -->
+        <div class="collection-bottom"
+          ><span>DESLIZA Y ENCUENTRA TU RITMO</span
+          ><span id="position">01 / 05</span></div
+        ></section
+      >
+
+      <!-- 7. CIERRE: llamada a explorar la colección. -->
+      <section class="closing"
+        ><span>NO HAY UN SOLO CAMINO.</span><h2>Hay uno a tu ritmo.</h2
+        ><a href="#productos" class="button">Explora la colección ↗</a></section
+      ></main
+    >
+    <!-- 8. PIE: aclaraciones del prototipo y vencimiento en la hora local del dispositivo. -->
+    <footer
+      ><a class="logo" href="#">RITMO<span>®</span></a
+      ><p
+        >Prototipo de tienda · Productos y precios ilustrativos en MXN.<br /><span
+          id="offer-storage-note"
+          >Contador de demostración: 2 horas desde tu primera visita en este
+          navegador.</span
+        ><br /><span id="offer-deadline"></span> No se realizan compras.</p
+      ><span>HECHO PARA MOVERTE ↗</span></footer
+    >
+
+    <!-- 9. MODAL REUTILIZABLE: JavaScript coloca aquí los datos del producto elegido. -->
+    <dialog id="details" aria-labelledby="detail-title"
+      ><button class="close" aria-label="Cerrar detalles">×</button
+      ><div class="detail-visual"><img id="detail-image" alt="" /></div
+      ><div class="detail-content"
+        ><div class="eyebrow" id="detail-category">COLECCIÓN RITMO</div
+        ><h2 id="detail-title"></h2><p id="detail-description"></p
+        ><p id="detail-price"></p
+        ><p id="detail-offer" class="detail-offer" hidden></p>
+        <!-- Aquí se crean los radios de talla/capacidad y color. -->
+        <div id="detail-options"></div>
+        <!-- aria-live anuncia cambios de selección sin mover el foco. -->
+        <p id="detail-selection" role="status" aria-live="polite"></p
+        ><p class="demo-note"
+          >Opciones ilustrativas; no representan inventario real. La imagen es
+          de referencia y no cambia al elegir color.</p
+        ><p class="purchase-note">Próximamente: compra en línea.</p
+        ><details class="store-info"
+          ><summary>Envíos, cambios y pagos</summary
+          ><p
+            >Las condiciones se publicarán antes de habilitar las compras. Por
+            ahora puedes explorar los productos y sus opciones de muestra.</p
+          ></details
+        ></div
+      ></dialog
+    >
+    <!-- 10. AVISOS: errores comprensibles y reintento de carga de imágenes. -->
+    <div id="site-feedback" class="site-feedback" hidden
+      ><p id="feedback-message" role="status" aria-live="polite"></p
+      ><button id="retry-images" hidden>Reintentar imágenes</button
+      ><button id="dismiss-feedback" aria-label="Cerrar aviso">×</button></div
+    >
+    <!-- Alternativa informativa si el navegador tiene JavaScript desactivado. -->
+    <noscript
+      ><p class="noscript-note"
+        >Activa JavaScript para usar el contador, explorar las opciones y
+        controlar los carruseles. Los productos siguen disponibles para
+        consultar.</p
+      ></noscript
+    >
+    <!-- 11. CAPA DE PARTÍCULAS-->
+    <div id="offer-fireworks" aria-hidden="true"></div>
+    <!-- 12. LÓGICA-->
+    <script src="script.js"></script></body
+></html>
